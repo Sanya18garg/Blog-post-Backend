@@ -53,4 +53,12 @@ public class blogservice {
         blog.setCreateDate(b.getCreateDate());
         return BlogRepository.save(blog);
     }
+    public List<blog> deleteblog(int userid, int blogid)
+    {
+        blog blog1=BlogRepository.findByBlogid(blogid);
+        user users=userRepository.findByUserId(userid);
+        BlogRepository.delete(blog1);
+        return BlogRepository.findByUser(users);
+
+    }
 }

@@ -54,7 +54,13 @@ public class blogcontroller {
         return blog;
     }
 
+    @RequestMapping(value="/deleteblog/{blogid}",method= RequestMethod.GET)
+    @ResponseBody
+    public List<blog> deleteblog(@PathVariable("blogid") int blogid, Principal principal)
+    {
+        return blogService.deleteblog(userService.getUserId(principal),blogid);
+    }
 
 
-    //deleting blog ---------------pending
+
 }
