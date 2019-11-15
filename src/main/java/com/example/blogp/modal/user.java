@@ -2,6 +2,7 @@ package com.example.blogp.modal;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @Entity
 @Table(name="login_details")
@@ -22,6 +23,12 @@ public class user implements Serializable {
     private int active;
     @Column(name = "role")
     private String role;
+    @Column(name = "status")
+    private String status;
+    @Column(name = "following")
+    private ArrayList<Integer> following;
+    @Column(name = "followers")
+    private ArrayList<Integer> followers;
 
     public int getUserId() {
         return userId;
@@ -69,6 +76,30 @@ public class user implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public ArrayList<Integer> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(ArrayList<Integer> following) {
+        this.following = following;
+    }
+
+    public ArrayList<Integer> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(ArrayList<Integer> followers) {
+        this.followers = followers;
     }
 }
 

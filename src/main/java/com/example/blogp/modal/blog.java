@@ -31,12 +31,15 @@ public class blog {
     @ManyToOne
     @JoinColumn(name = "userid", referencedColumnName = "userid", nullable = false)
     private user user;
+    @Column(name = "status")
+    private String status;
 
 //    @OneToMany(mappedBy = "followers", cascade = CascadeType.REMOVE)
 //    private Collection<Users> followers;
 //
 //    @OneToMany(mappedBy = "following", cascade = CascadeType.REMOVE)
 //    private Collection<Users> following;
+
 
     public Integer getBlogid() {
         return blogid;
@@ -78,21 +81,11 @@ public class blog {
         this.user = user;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
-
-//    public Collection<Users> getFollowers() {
-//        return followers;
-//    }
-//
-//    public void setFollowers(Collection<Users> followers) {
-//        this.followers = followers;
-//    }
-//
-//    public Collection<Users> getFollowing() {
-//        return following;
-//    }
-//
-//    public void setFollowing(Collection<Users> following) {
-//        this.following = following;
-//    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

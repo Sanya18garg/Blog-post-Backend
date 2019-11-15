@@ -15,6 +15,7 @@ public interface blogrepo extends JpaRepository<blog,Integer> {
         List<blog> findByUser(user user);
         blog findByBlogid(int blogid);
 
-    }
+    List<blog> findByStatus(String aPublic);
+}
 
 

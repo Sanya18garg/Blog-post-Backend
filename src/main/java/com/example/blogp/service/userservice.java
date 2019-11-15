@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,6 +31,21 @@ public class userservice {
 //    }
     public Optional<user> getUserProfile(Principal principal) {
         return userRepository.findByUsername(principal.getName());
+    }
+    public List<user> searchResult(String keyword) {
+        List<user> itemsList = userRepository.findAll();
+        List<user> foundList = new ArrayList<>();
+
+        for (user items : itemsList) {
+            if (items.getUsername() != null  && (items.getUsername().
+                    toLowerCase().contains(keyword.toLowerCase())
+
+            )
+            ) {
+                foundList.add(items);
+            }
+        }
+        return foundList;
     }
     //public ResponseEntity<?> checkDetails(Users user, Principal principal) {
     //  Optional<Users> usercheck = userRepository.findByUsername(principal.getName());

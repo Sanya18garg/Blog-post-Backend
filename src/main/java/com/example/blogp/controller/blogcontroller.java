@@ -1,6 +1,8 @@
 package com.example.blogp.controller;
 import com.example.blogp.modal.blog;
+import com.example.blogp.modal.user;
 import com.example.blogp.service.blogservice;
+import com.example.blogp.service.currentuser;
 import com.example.blogp.service.userservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,8 @@ public class blogcontroller {
     blogservice blogService;
     @Autowired
     userservice userService;
+    @Autowired
+    com.example.blogp.service.currentuser currentuser;
 
     @PostMapping(value="/addblog")
     @ResponseBody
@@ -62,5 +66,17 @@ public class blogcontroller {
     }
 
 
+    @GetMapping("/getfollowers")
+    public List<user> getfollowers(Principal principal){
+        return currentuser.getfollowers(principal);
+    }
 
+    @GetMapping("/getfollowing")
+    public List<user> getfollowing(Principal principal){
+        return currentuser.getfollowing(principal);
+    }
+    @GetMapping(path = "search/{keyword}")
+    public List<user> getSearchResult(@PathVariable("keyword") String keyword) {
+        return userService.searchResult(keyword);
+    }
 }
